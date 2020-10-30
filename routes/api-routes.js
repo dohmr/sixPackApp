@@ -12,6 +12,15 @@ router.get("/api/workouts", (req, res) => {
             res.status(400).json(err);
         });
 });
+router.get("/api/workouts/range", ({ query }, res) => {
+    db.Workout.find({ day: { $gte: query.start, $lte: query.end } })
+      .then(dbWorkouts => {
+        res.json(dbWorkouts);
+      })
+      .catch(err => {
+        res.json(err);
+      });
+  });
 // PUT exercise into current workout. save by ID
 router.put("/api/workouts/:id", ({ body, params }, res) => {
     db.Workout.findOneAndUpdate({ _id: params.id },

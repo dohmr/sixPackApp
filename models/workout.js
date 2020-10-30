@@ -5,6 +5,7 @@ const Workouts = new Schema({
 
     day: {
         type: Date,
+        default: Date.now
     },
     exercise: [{
         type: Schema.Types.ObjectId,
