@@ -20,9 +20,9 @@ Deployed application, via [HEROKU / sixPackApp](https://desolate-gorge-94650.her
 
 ## Screens
 
-Data Screenshot:
+UNKNOWN ERROR Screenshot:
 
-![roster](assets/roster.png)
+![ISSUE](/public/assets/issue.png)
 
 ## Contributors
 
