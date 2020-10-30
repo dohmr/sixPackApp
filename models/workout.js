@@ -3,11 +3,17 @@ const Schema = mongoose.Schema;
 
 const Workouts = new.Schema("Workout", {
 
-    day: {},
-    exercise: {},
-    duration: {}
+    day: {
+        type: Date,
+    },
+    exercise: [{
+        ref: "Exercise"
+    }],
+    duration: {
+        type: Number
+    }
 
-    
+
 });
 
 // day: new Date().setDate(new Date().getDate()-7),
