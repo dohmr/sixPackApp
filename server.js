@@ -1,5 +1,4 @@
 const express = require('express');
-// const logger = require('morgan');
 const mongoose = require('mongoose');
 const PORT = process.env.PORT || 3000;
 
@@ -26,3 +25,6 @@ app.use(require("./routes/api-routes.js"));
 app.listen(PORT, () => {
     console.log(`App running on port ${PORT}..`);
 })
+
+const logger = require("morgan");
+app.use(logger("dev"));
