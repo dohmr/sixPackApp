@@ -13,14 +13,16 @@ router.get("/api/workouts", (req, res) => {
         });
 });
 // PUT exercise into current workout. save by ID
-router.put("/api/workouts", (req, res) => {
-    db.Workout.find({})
-
+router.put("/api/workouts/:id", ({ body, params }, res) => {
+    db.Workout.findOneAndUpdate({ _id: params.id },
+        { $push: { excercises: body } },
+        // { upsert: true, useFindandModify: false },
+    )
         .then(dbWorkout => {
             res.json(dbWorkout);
         })
         .catch(err => {
-            res.status(400).json(err);
+            res.json(err);
         });
 });
 // CREATE new workout, remove old data?
@@ -36,10 +38,13 @@ router.post("/api/workouts", (req, res) => {
 });
 // DELETE  current workout and start a new
 router.delete("/api/workouts", ({ body }, res) => {
-    Workout.findByIdAndDelete(body.id)
-      .then(() => {
-        res.json(true);
-      })
-      .catch(err => {
-        res.json(err);
-      });
+    db.Workout.findByIdAndDelete(body.id)
+        .then(() => {
+            res.json(true);
+        })
+        .catch(err => {
+            res.json(err);
+        });
+});
+
+module.exports = router;
