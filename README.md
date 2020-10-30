@@ -26,7 +26,7 @@ Data Screenshot:
 
 ## Contributors
 
-Started code provided by UCSD:Ext
+Starter code provided by UCSD:Ext
 
 
 
