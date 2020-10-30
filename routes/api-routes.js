@@ -17,8 +17,8 @@ router.put("/api/workouts/:id", ({ body, params }, res) => {
     db.Workout.findOneAndUpdate({ _id: params.id },
         { $push: { excercises: body } },
     )
-        .then(dbWorkout => {
-            res.json(dbWorkout);
+        .then(updatedWorkout => {
+            res.json(updatedWorkout);
         })
         .catch(err => {
             res.json(err);
@@ -28,8 +28,8 @@ router.put("/api/workouts/:id", ({ body, params }, res) => {
 router.post("/api/workouts", (req, res) => {
     db.Workout.create({})
 
-        .then(dbWorkout => {
-            res.json(dbWorkout);
+        .then(addWorkout => {
+            res.json(addWorkout);
         })
         .catch(err => {
             res.status(400).json(err);
